@@ -1,5 +1,5 @@
 " stolen from https://gist.github.com/hanjingfei/52378c7b9cfb62b02b0ab15d701bb04d
-function! GotoFileWithLineNum()
+function! agbuf#GotoFileWithLineNum()
     " filename under the cursor
     let file_name = expand('<cfile>')
     if !strlen(file_name)
@@ -25,7 +25,7 @@ function! GotoFileWithLineNum()
     endif
 endfunction
 
-function! Ag(args)
+function! agbuf#Ag(args)
   let cmd = "ag " . a:args
   echo "running: " . cmd
   enew
@@ -33,7 +33,7 @@ function! Ag(args)
   setlocal cursorline
   execute "silent 0read !" . cmd
   execute "silent file " . cmd
-  nnoremap <buffer> <Cr> ^:call GotoFileWithLineNum()<Cr>
+  nnoremap <buffer> <Cr> ^:call agbuf#GotoFileWithLineNum()<Cr>
   setlocal nomodifiable
 endfunction
 
