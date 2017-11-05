@@ -1,6 +1,6 @@
 syntax case ignore
 
-syntax match AgOut /[^:]*/
+syntax match AgFile /[^:]*/
             \ nextgroup=AgSeparator1
 syntax match AgSeparator1 /:/ contained
             \ nextgroup=AgLineNr
@@ -12,9 +12,9 @@ syntax match AgPattern /.*/ contained
 
 
 
-highlight AgOut           ctermfg=33          guifg=#00ff00
-highlight AgSeparator1    ctermfg=red         guifg=#ff0000
-highlight AgSeparator2    ctermfg=red         guifg=#ff0000
-highlight AgLineNr        ctermfg=yellow      guifg=#ffff00
+highlight link AgFile Directory
+highlight link AgSeparator1 Normal
+highlight link AgSeparator2    Normal
+highlight link AgLineNr Directory
 highlight link AgPattern  Normal
 
