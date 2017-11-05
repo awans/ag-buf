@@ -6,7 +6,6 @@ function! agbuf#GotoFileWithLineNum()
         echo 'no file under cursor'
         return
     endif
-
     " look for a line number separated by a :
     if search('\%#\f*:\zs[0-9]\+')
         " change the 'iskeyword' option temporarily to pick up just numbers
@@ -15,10 +14,8 @@ function! agbuf#GotoFileWithLineNum()
         let line_number = expand('<cword>')
         exe 'set iskeyword=' . temp
     endif
-
     " edit the file
     exe 'e '.file_name
-
     " if there is a line number, go to it
     if exists('line_number')
         exe line_number
@@ -33,7 +30,8 @@ function! agbuf#Ag(args)
   setlocal cursorline
   execute "silent 0read !" . cmd
   execute "silent file " . cmd
-  nnoremap <buffer> <Cr> ^:call agbuf#GotoFileWithLineNum()<Cr>
+  nnoremap <buffer> <cr> ^:call agbuf#GotoFileWithLineNum()<cr>
   setlocal nomodifiable
+  setlocal syntax=agbuf
 endfunction
 
