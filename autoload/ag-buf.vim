@@ -1,3 +1,5 @@
+echom "Autoloading..."
+
 " stolen from https://gist.github.com/hanjingfei/52378c7b9cfb62b02b0ab15d701bb04d
 function! GotoFileWithLineNum()
     " filename under the cursor
@@ -25,7 +27,7 @@ function! GotoFileWithLineNum()
     endif
 endfunction
 
-function! Ag(args)
+function! AgIt(args)
   let cmd = "ag " . a:args
   echo "running: " . cmd
   enew
