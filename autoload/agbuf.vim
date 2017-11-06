@@ -23,7 +23,11 @@ function! agbuf#GotoFileWithLineNum()
 endfunction
 
 function! agbuf#Ag(args)
-  let cmd = "ag " . a:args
+  if !exists("g:ag_prg")
+    let g:ag_prg="ag"
+  endif
+
+  let cmd = g:ag_prg . " " . a:args
   echo "running: " . cmd
   enew
   setlocal buftype=nofile noswapfile
